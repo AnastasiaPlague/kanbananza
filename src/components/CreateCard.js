@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class CreateCard extends Component {
   state = {
-    title: '',
-    description: '',
+    title: "",
+    description: ""
   };
 
   handleChange = (event) => {
@@ -21,19 +21,20 @@ class CreateCard extends Component {
   }
 
   handleSubmit = (event) => {
+    console.log(this.props);
     event.preventDefault();
 
     if (this.isInvalid) return;
 
-    const { onCreateCard } = this.props;
+    const { createCard, listId } = this.props;
 
-    if (onCreateCard) {
-      onCreateCard(this.state);
+    if (createCard) {
+      createCard(listId, this.state);
     }
 
     this.setState({
-      title: '',
-      description: '',
+      title: "",
+      description: ""
     });
   };
 
